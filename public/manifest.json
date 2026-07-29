@@ -1,0 +1,15 @@
+{
+  "short_name": "Vetrivel Portfolio",
+  "name": "Vetrivel D | Senior Full Stack Developer & AI Engineer",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#07090e",
+  "theme_color": "#07090e",
+  "display": "standalone"
+}

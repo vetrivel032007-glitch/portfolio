@@ -1,0 +1,60 @@
+.telemetryContainer {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 9990;
+  pointer-events: none;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #94a3b8;
+  background: rgba(5, 10, 24, 0.75);
+  border: 1px solid rgba(0, 243, 255, 0.25);
+  border-radius: 6px;
+  padding: 0.4rem 0.85rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .telemetryContainer {
+    display: none; /* Hide telemetry on mobile to avoid overcrowding */
+  }
+}
+
+.hudLine {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #00f3ff;
+  box-shadow: 0 0 8px #00f3ff;
+  animation: telemetryPulse 2s infinite ease-in-out;
+}
+
+.sysText {
+  color: #00f3ff;
+}
+
+.valText {
+  color: #e2e8f0;
+}
+
+.valAccent {
+  color: #ff007f;
+}
+
+.divider {
+  opacity: 0.3;
+}
+
+@keyframes telemetryPulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
