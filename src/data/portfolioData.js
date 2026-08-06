@@ -195,9 +195,10 @@ export const internshipsData = [
     id: "internship-novitech",
     role: "Full Stack Web Development Intern",
     company: "Novitech",
+    companyShort: "NOVITECH",
     location: "Coimbatore, Tamil Nadu, India",
     duration: "2026",
-    logo: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=150&auto=format&fit=crop",
+    iconType: "code",
     responsibilities: [
       "Developed responsive frontend interfaces and reusable components using React.js, JavaScript, and HTML5/CSS3.",
       "Integrated RESTful API endpoints and implemented state management for dynamic web applications.",
@@ -209,9 +210,10 @@ export const internshipsData = [
     id: "internship-nikalus",
     role: "Artificial Intelligence Intern",
     company: "Nikalus Solution",
+    companyShort: "NIKALUS",
     location: "Erode, Tamil Nadu, India",
     duration: "2025",
-    logo: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=150&auto=format&fit=crop",
+    iconType: "ai",
     responsibilities: [
       "Worked on artificial intelligence and machine learning data preprocessing pipelines using Python.",
       "Assisted in training predictive models, evaluating dataset performance, and writing automated data scripts.",

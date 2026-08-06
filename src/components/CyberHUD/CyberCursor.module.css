@@ -1,124 +1,228 @@
+/* Trailing Lagging Cyber Square */
+.trailSquare {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 52px;
+  height: 52px;
+  margin-top: -26px;
+  margin-left: -26px;
+  pointer-events: none;
+  z-index: 999998;
+  border: 1px dashed rgba(56, 189, 248, 0.4);
+  clip-path: polygon(
+    10px 0, calc(100% - 10px) 0, 100% 10px, 100% calc(100% - 10px),
+    calc(100% - 10px) 100%, 10px 100%, 0 calc(100% - 10px), 0 10px
+  );
+  box-shadow: inset 0 0 12px rgba(56, 189, 248, 0.15);
+  transition: width 0.3s ease, height 0.3s ease, border-color 0.3s ease, transform 0.02s linear;
+}
+
+.trailHovered {
+  width: 64px;
+  height: 64px;
+  margin-top: -32px;
+  margin-left: -32px;
+  border-color: rgba(244, 114, 182, 0.6);
+  border-style: solid;
+  box-shadow: inset 0 0 20px rgba(244, 114, 182, 0.25);
+  transform: rotate(45deg);
+}
+
+.trailScrolling {
+  border-color: rgba(192, 132, 252, 0.8);
+  box-shadow: 0 0 20px rgba(192, 132, 252, 0.4);
+}
+
+/* Main Cursor Wrapper */
 .cursorWrapper {
   position: fixed;
   top: 0;
   left: 0;
-  width: 36px;
-  height: 36px;
-  margin-top: -18px;
-  margin-left: -18px;
+  width: 38px;
+  height: 38px;
+  margin-top: -19px;
+  margin-left: -19px;
   pointer-events: none;
-  z-index: 100000;
-  transition: transform 0.05s ease-out;
+  z-index: 999999;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: transform 0.04s cubic-bezier(0.1, 0.9, 0.2, 1);
 }
 
-/* Center Dot */
-.dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent-cyan, #00f3ff);
-  box-shadow: 0 0 10px var(--accent-cyan, #00f3ff);
-  transition: transform 0.2s ease, background-color 0.2s ease;
+/* Center Core Square */
+.centerSquareCore {
+  width: 7px;
+  height: 7px;
+  background: #38bdf8;
+  box-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  clip-path: polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%);
 }
 
-/* Outer Target Reticle Ring */
-.reticleRing {
+/* Inner Chamfered Tech Square */
+.innerTechSquare {
   position: absolute;
   inset: 0;
-  border: 1px dashed rgba(0, 243, 255, 0.45);
-  border-radius: 50%;
-  animation: spinReticle 10s linear infinite;
-  transition: all 0.2s ease;
+  border: 1.5px solid rgba(56, 189, 248, 0.7);
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.4), inset 0 0 8px rgba(56, 189, 248, 0.2);
+  clip-path: polygon(
+    8px 0, calc(100% - 8px) 0, 100% 8px, 100% calc(100% - 8px),
+    calc(100% - 8px) 100%, 8px 100%, 0 calc(100% - 8px), 0 8px
+  );
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Corner Reticle Markers */
-.cornerMarker {
+/* Corner Bracket Accents */
+.cornerBracket {
   position: absolute;
-  width: 5px;
-  height: 5px;
-  border-color: var(--accent-cyan, #00f3ff);
+  width: 6px;
+  height: 6px;
+  border-color: #38bdf8;
   border-style: solid;
 }
 
 .topLeft {
-  top: -2px;
-  left: -2px;
-  border-width: 1.5px 0 0 1.5px;
+  top: -3px;
+  left: -3px;
+  border-width: 2px 0 0 2px;
 }
 
 .topRight {
-  top: -2px;
-  right: -2px;
-  border-width: 1.5px 1.5px 0 0;
+  top: -3px;
+  right: -3px;
+  border-width: 2px 2px 0 0;
 }
 
 .bottomLeft {
-  bottom: -2px;
-  left: -2px;
-  border-width: 0 0 1.5px 1.5px;
+  bottom: -3px;
+  left: -3px;
+  border-width: 0 0 2px 2px;
 }
 
 .bottomRight {
-  bottom: -2px;
-  right: -2px;
-  border-width: 0 1.5px 1.5px 0;
+  bottom: -3px;
+  right: -3px;
+  border-width: 0 2px 2px 0;
 }
 
-/* Crosshairs */
-.crosshairX,
-.crosshairY {
+/* Outer Rotating HUD Scanner */
+.outerHudScanner {
   position: absolute;
-  background: rgba(0, 243, 255, 0.35);
+  inset: -6px;
+  border: 1px dashed rgba(56, 189, 248, 0.5);
+  border-radius: 4px;
+  animation: spinSquareScanner 10s linear infinite;
+  transition: all 0.25s ease;
+}
+
+/* Crosshair Extensions */
+.crosshairH {
+  position: absolute;
+  width: 16px;
+  height: 1.5px;
+  background: rgba(56, 189, 248, 0.8);
   transition: all 0.2s ease;
 }
 
-.crosshairX {
-  width: 12px;
-  height: 1px;
+.crosshairV {
+  position: absolute;
+  width: 1.5px;
+  height: 16px;
+  background: rgba(56, 189, 248, 0.8);
+  transition: all 0.2s ease;
 }
 
-.crosshairY {
-  width: 1px;
-  height: 12px;
+/* HUD Data Readout Tag */
+.hudBadge {
+  position: absolute;
+  bottom: -18px;
+  right: -24px;
+  background: rgba(7, 9, 14, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-family: monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: 0.05em;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  transition: all 0.2s ease;
 }
 
-/* Hovered State */
-.hovered .dot {
-  background: var(--accent-pink, #ff007f);
-  box-shadow: 0 0 14px var(--accent-pink, #ff007f);
-  transform: scale(1.5);
+/* Hovered Lock State */
+.hovered .centerSquareCore {
+  background: #f472b6;
+  box-shadow: 0 0 16px #f472b6, 0 0 30px #f472b6;
+  transform: scale(1.5) rotate(45deg);
 }
 
-.hovered .reticleRing {
-  inset: -6px;
-  border-color: rgba(255, 0, 127, 0.7);
-  border-style: solid;
-  box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+.hovered .innerTechSquare {
+  inset: -7px;
+  border-color: #f472b6;
+  box-shadow: 0 0 22px rgba(244, 114, 182, 0.7), inset 0 0 16px rgba(244, 114, 182, 0.4);
+  transform: rotate(45deg);
+}
+
+.hovered .outerHudScanner {
+  inset: -12px;
+  border-color: rgba(244, 114, 182, 0.8);
   animation-duration: 4s;
+  transform: rotate(45deg);
 }
 
-.hovered .cornerMarker {
-  border-color: var(--accent-pink, #ff007f);
+.hovered .cornerBracket {
+  border-color: #f472b6;
 }
 
-.hovered .crosshairX {
-  width: 20px;
-  background: rgba(255, 0, 127, 0.6);
+.hovered .hudBadge {
+  border-color: #f472b6;
+  color: #f472b6;
+  background: rgba(244, 114, 182, 0.15);
+  box-shadow: 0 0 10px rgba(244, 114, 182, 0.4);
 }
 
-.hovered .crosshairY {
-  height: 20px;
-  background: rgba(255, 0, 127, 0.6);
+/* Scroll Active State */
+.scrolling .innerTechSquare {
+  border-color: #c084fc;
+  box-shadow: 0 0 26px rgba(192, 132, 252, 0.9);
+  animation: pulseCyberSquare 0.35s ease infinite alternate;
 }
 
-@keyframes spinReticle {
+.scrolling .centerSquareCore {
+  background: #c084fc;
+  box-shadow: 0 0 18px #c084fc;
+}
+
+.scrolling .hudBadge {
+  border-color: #c084fc;
+  color: #c084fc;
+}
+
+/* Mouse Click Shockwave Effect */
+.clicked .innerTechSquare {
+  transform: scale(1.4);
+  border-color: #25d366;
+  box-shadow: 0 0 30px #25d366;
+}
+
+@keyframes spinSquareScanner {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
+  }
+}
+
+@keyframes pulseCyberSquare {
+  from {
+    transform: scale(0.92);
+  }
+  to {
+    transform: scale(1.22);
   }
 }

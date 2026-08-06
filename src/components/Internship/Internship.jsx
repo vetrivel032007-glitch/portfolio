@@ -1,9 +1,26 @@
 import React from 'react';
 import styles from './Internship.module.css';
 import { internshipsData } from '../../data/portfolioData';
-import { FaBuilding, FaCalendarAlt } from 'react-icons/fa';
+import { FaBuilding, FaCalendarAlt, FaLaptopCode, FaBrain } from 'react-icons/fa';
 
 export default function Internship() {
+  const getCompanyIcon = (iconType, company) => {
+    if (iconType === 'code' || company.toLowerCase().includes('novitech')) {
+      return (
+        <div className={`${styles.companyIconBox} ${styles.novitechBadge}`} title={company}>
+          <FaLaptopCode className={styles.companySvgIcon} />
+          <span className={styles.companySubBadge}>N</span>
+        </div>
+      );
+    }
+    return (
+      <div className={`${styles.companyIconBox} ${styles.nikalusBadge}`} title={company}>
+        <FaBrain className={styles.companySvgIcon} />
+        <span className={styles.companySubBadge}>AI</span>
+      </div>
+    );
+  };
+
   return (
     <section id="experience" className="section">
       <div className="container">
@@ -20,11 +37,7 @@ export default function Internship() {
                 {/* Header */}
                 <div className={styles.itemHeader}>
                   <div className={styles.companyInfo}>
-                    <img
-                      src={exp.logo}
-                      alt={exp.company}
-                      className={styles.logo}
-                    />
+                    {getCompanyIcon(exp.iconType, exp.company)}
                     <div>
                       <h3 className={styles.roleTitle}>{exp.role}</h3>
                       <div className={styles.companyName}>
