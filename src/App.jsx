@@ -14,6 +14,7 @@ import Achievements from './components/Achievements/Achievements';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
 import BackgroundParticles from './components/BackgroundParticles/BackgroundParticles';
+import CyberCursor from './components/CyberHUD/CyberCursor';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -29,6 +30,7 @@ export default function App() {
 
   return (
     <>
+      <CyberCursor />
       {isLoading ? (
         <LoadingScreen onComplete={() => setIsLoading(false)} />
       ) : (

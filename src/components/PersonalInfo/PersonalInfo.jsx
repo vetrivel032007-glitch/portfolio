@@ -46,11 +46,9 @@ export default function PersonalInfo() {
                   <span className={styles.eduBadge}>
                     🎓 SSLC : {personalInfo.educationLine.sslc}
                   </span>
-                  <span style={{ color: 'var(--text-muted)' }}>|</span>
                   <span className={styles.eduBadge}>
                     🎓 HSC : {personalInfo.educationLine.hsc}
                   </span>
-                  <span style={{ color: 'var(--text-muted)' }}>|</span>
                   <span className={styles.eduBadge}>
                     🎓 CGPA : {personalInfo.educationLine.cgpa}
                   </span>

@@ -21,6 +21,14 @@ export default function Navbar({ theme, toggleTheme }) {
   ];
 
   useEffect(() => {
+    if (mobileOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+  }, [mobileOpen]);
+
+  useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
 
@@ -54,7 +62,7 @@ export default function Navbar({ theme, toggleTheme }) {
       <div className={`container ${styles.navContainer}`}>
         {/* Logo */}
         <a href="#home" className={styles.logo} onClick={() => handleNavClick('#home')}>
-          <span>VETRIVEL D</span>
+          <span className={styles.logoText}>VETRIVEL D</span>
           <span className={styles.logoAccent}>&lt;/&gt;</span>
         </a>
 
@@ -99,7 +107,7 @@ export default function Navbar({ theme, toggleTheme }) {
               handleNavClick('#contact');
             }}
           >
-            <FaDownload /> Resume
+            <FaDownload /> <span className={styles.resumeText}>Resume</span>
           </a>
 
           <button
@@ -112,10 +120,17 @@ export default function Navbar({ theme, toggleTheme }) {
         </div>
       </div>
 
+      {/* Backdrop overlay */}
+      {mobileOpen && (
+        <div
+          className={styles.backdrop}
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
+
       {/* Mobile Menu Drawer */}
       <div
-        className={`${styles.mobileDrawer} ${mobileOpen ? styles.mobileDrawerOpen : ''
-          }`}
+        className={`${styles.mobileDrawer} ${mobileOpen ? styles.mobileDrawerOpen : ''}`}
       >
         {navItems.map((item) => (
           <a

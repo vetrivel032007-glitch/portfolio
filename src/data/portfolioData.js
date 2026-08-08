@@ -32,10 +32,10 @@ export const personalInfo = {
     "🟢 Open to Full-Time Opportunities",
   ],
   socials: {
-    github: "https://github.com/vetrivel-d",
-    linkedin: "https://linkedin.com/in/vetrivel-d",
-    leetcode: "https://leetcode.com/vetrivel-d",
-    hackerrank: "https://hackerrank.com/vetrivel-d",
+    github: "https://github.com/vetrivel032007-glitch",
+    linkedin: "https://www.linkedin.com/in/vetri-vel-6755a1385",
+    leetcode: "https://leetcode.com/u/vetrivel03_2007",
+    hackerrank: "https://www.hackerrank.com/profile/vetrivel03_2007",
   },
 };
 
@@ -184,7 +184,7 @@ export const projectsData = [
     architecture:
       "Modular React Component System + Framer Motion Spring Physics + Custom CSS Variables",
     performance: "99/100 Lighthouse Performance & 100 SEO.",
-    github: "https://github.com/vetrivel-d/protfolio",
+    github: "https://github.com/vetrivel032007-glitch/portfolio",
     demo: "https://vetrivel-d.vercel.app",
     featured: true,
   },
@@ -195,9 +195,10 @@ export const internshipsData = [
     id: "internship-novitech",
     role: "Full Stack Web Development Intern",
     company: "Novitech",
+    companyShort: "NOVITECH",
     location: "Coimbatore, Tamil Nadu, India",
     duration: "2026",
-    logo: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=150&auto=format&fit=crop",
+    iconType: "code",
     responsibilities: [
       "Developed responsive frontend interfaces and reusable components using React.js, JavaScript, and HTML5/CSS3.",
       "Integrated RESTful API endpoints and implemented state management for dynamic web applications.",
@@ -209,9 +210,10 @@ export const internshipsData = [
     id: "internship-nikalus",
     role: "Artificial Intelligence Intern",
     company: "Nikalus Solution",
+    companyShort: "NIKALUS",
     location: "Erode, Tamil Nadu, India",
     duration: "2025",
-    logo: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=150&auto=format&fit=crop",
+    iconType: "ai",
     responsibilities: [
       "Worked on artificial intelligence and machine learning data preprocessing pipelines using Python.",
       "Assisted in training predictive models, evaluating dataset performance, and writing automated data scripts.",
@@ -302,20 +304,20 @@ export const achievementsData = [
 
 export const codingStats = {
   leetcode: {
-    solved: "250+",
-    rating: "1650+",
-    badge: "Knight Badged / Active",
-    link: "https://leetcode.com/vetrivel-d",
+    solved: "200+",
+    rating: "1500+",
+    badge: "Active Problem Solver",
+    link: "https://leetcode.com/u/vetrivel03_2007",
   },
   github: {
-    repositories: "35+",
-    contributions: "500+ in 2024",
-    stars: "45+",
-    link: "https://github.com/vetrivel-d",
+    repositories: "2+ Public Repos",
+    contributions: "Active Contributor",
+    stars: "Featured Projects",
+    link: "https://github.com/vetrivel032007-glitch",
   },
   hackerrank: {
-    stars: "5 Stars in Python & Problem Solving",
-    rank: "Top 5%",
-    link: "https://hackerrank.com/vetrivel-d",
+    stars: "2 Stars in Java",
+    rank: "Java Badge ★★",
+    link: "https://www.hackerrank.com/profile/vetrivel03_2007",
   },
 };

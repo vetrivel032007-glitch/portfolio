@@ -13,19 +13,35 @@ html {
   background-color: var(--bg-dark);
   color: var(--text-primary);
   overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
 }
 
 body {
   min-height: 100vh;
+  min-height: 100dvh;
   background-color: var(--bg-dark);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Prevent horizontal overflow on all wrapper elements */
+#root, main {
+  overflow-x: hidden;
+  width: 100%;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
+}
+
+@media (max-width: 768px) {
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
 }
 
 ::-webkit-scrollbar-track {
@@ -47,11 +63,17 @@ body {
   color: #ffffff;
 }
 
+/* Tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: rgba(56, 189, 248, 0.15);
+}
+
 /* Base Container */
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 1.5rem;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -60,21 +82,46 @@ body {
   }
 }
 
+@media (max-width: 480px) {
+  .container {
+    padding: 0 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .container {
+    padding: 0 0.65rem;
+  }
+}
+
 /* Section Wrapper */
 .section {
-  padding: 6rem 0;
+  padding: 5.5rem 0;
   position: relative;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
   .section {
-    padding: 4rem 0;
+    padding: 3.75rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 2.75rem 0;
+  }
+}
+
+@media (max-width: 360px) {
+  .section {
+    padding: 2rem 0;
   }
 }
 
 /* Headings */
 .section-title {
-  font-size: 2.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
   font-weight: 800;
   letter-spacing: -0.03em;
   background: var(--gradient-text);
@@ -82,24 +129,28 @@ body {
   -webkit-text-fill-color: transparent;
   margin-bottom: 0.75rem;
   text-align: center;
+  word-break: break-word;
 }
 
 .section-subtitle {
-  font-size: 1.1rem;
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   color: var(--text-secondary);
   text-align: center;
   max-width: 650px;
-  margin: 0 auto 3.5rem auto;
+  margin: 0 auto 3rem auto;
+  padding: 0 0.5rem;
 }
 
 @media (max-width: 768px) {
-  .section-title {
-    font-size: 2rem;
-  }
-
   .section-subtitle {
-    font-size: 1rem;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-subtitle {
+    margin-bottom: 1.75rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -114,10 +165,21 @@ body {
   transition: var(--transition-normal);
 }
 
-.glass-card:hover {
-  border-color: var(--border-glow);
-  box-shadow: var(--shadow-glow);
-  transform: translateY(-3px);
+/* Only apply hover transforms on devices with a real mouse pointer */
+@media (hover: hover) and (pointer: fine) {
+  .glass-card:hover {
+    border-color: var(--border-glow);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-3px);
+  }
+}
+
+/* Touch devices: just highlight the border on tap, no transform */
+@media (hover: none) {
+  .glass-card:active {
+    border-color: var(--border-glow);
+    box-shadow: var(--shadow-glow);
+  }
 }
 
 /* Buttons */
@@ -136,11 +198,26 @@ body {
   box-shadow: var(--shadow-glow);
   transition: var(--transition-fast);
   text-decoration: none;
+  justify-content: center;
+  white-space: nowrap;
 }
 
-.btn-primary:hover {
-  transform: translateY(-2px) scale(1.02);
-  box-shadow: 0 0 45px -2px rgba(56, 189, 248, 0.5);
+@media (hover: hover) and (pointer: fine) {
+  .btn-primary:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 45px -2px rgba(56, 189, 248, 0.5);
+  }
+}
+
+.btn-primary:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 480px) {
+  .btn-primary {
+    padding: 0.75rem 1.35rem;
+    font-size: 0.9rem;
+  }
 }
 
 .btn-secondary {
@@ -158,13 +235,28 @@ body {
   cursor: pointer;
   transition: var(--transition-fast);
   text-decoration: none;
+  justify-content: center;
+  white-space: nowrap;
 }
 
-.btn-secondary:hover {
-  background: var(--bg-glass-hover);
-  border-color: var(--accent-cyan);
-  color: var(--accent-cyan);
-  transform: translateY(-2px);
+@media (hover: hover) and (pointer: fine) {
+  .btn-secondary:hover {
+    background: var(--bg-glass-hover);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    transform: translateY(-2px);
+  }
+}
+
+.btn-secondary:active {
+  transform: scale(0.97);
+}
+
+@media (max-width: 480px) {
+  .btn-secondary {
+    padding: 0.75rem 1.35rem;
+    font-size: 0.9rem;
+  }
 }
 
 /* Animations & Keyframes */
@@ -201,5 +293,28 @@ body {
 
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Ensure images are always responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Safe area insets for notched devices (iPhones etc.) */
+@supports (padding: env(safe-area-inset-bottom)) {
+  body {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
   }
 }

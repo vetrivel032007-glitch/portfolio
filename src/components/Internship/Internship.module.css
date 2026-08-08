@@ -5,6 +5,12 @@
   padding-left: 2rem;
 }
 
+@media (max-width: 576px) {
+  .timeline {
+    padding-left: 1.25rem;
+  }
+}
+
 .timeline::before {
   content: '';
   position: absolute;
@@ -19,7 +25,7 @@
 
 .timelineItem {
   position: relative;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.25rem;
 }
 
 .timelineDot {
@@ -34,15 +40,30 @@
   box-shadow: 0 0 12px var(--accent-cyan);
 }
 
+@media (max-width: 576px) {
+  .timelineDot {
+    left: -1.65rem;
+    width: 14px;
+    height: 14px;
+    top: 1.25rem;
+  }
+}
+
 .timelineCard {
   background: var(--bg-card);
   border: 1px solid var(--border-glass);
   border-radius: var(--radius-lg);
-  padding: 2rem;
+  padding: 1.85rem;
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: var(--shadow-md);
   transition: var(--transition-normal);
+}
+
+@media (max-width: 576px) {
+  .timelineCard {
+    padding: 1.25rem;
+  }
 }
 
 .timelineCard:hover {
@@ -66,12 +87,70 @@
   gap: 1rem;
 }
 
-.logo {
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  object-fit: cover;
+.companyIconBox {
+  width: 58px;
+  height: 58px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.novitechBadge {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.2) 0%, rgba(129, 140, 248, 0.2) 100%);
+  border: 1.5px solid rgba(56, 189, 248, 0.5);
+  color: #38bdf8;
+  box-shadow: 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+.timelineCard:hover .novitechBadge {
+  transform: scale(1.08) rotate(3deg);
+  border-color: #38bdf8;
+  box-shadow: 0 0 22px rgba(56, 189, 248, 0.6);
+}
+
+.nikalusBadge {
+  background: linear-gradient(135deg, rgba(192, 132, 252, 0.2) 0%, rgba(244, 114, 182, 0.2) 100%);
+  border: 1.5px solid rgba(192, 132, 252, 0.5);
+  color: #c084fc;
+  box-shadow: 0 0 15px rgba(192, 132, 252, 0.3);
+}
+
+.timelineCard:hover .nikalusBadge {
+  transform: scale(1.08) rotate(-3deg);
+  border-color: #c084fc;
+  box-shadow: 0 0 22px rgba(192, 132, 252, 0.6);
+}
+
+.companySvgIcon {
+  font-size: 1.65rem;
+}
+
+.companySubBadge {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  background: var(--bg-dark, #07090e);
   border: 1px solid var(--border-glass-bright);
+  font-size: 0.65rem;
+  font-weight: 800;
+  padding: 1px 4px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+}
+
+.novitechBadge .companySubBadge {
+  color: #38bdf8;
+  border-color: rgba(56, 189, 248, 0.5);
+}
+
+.nikalusBadge .companySubBadge {
+  color: #c084fc;
+  border-color: rgba(192, 132, 252, 0.5);
 }
 
 .roleTitle {
