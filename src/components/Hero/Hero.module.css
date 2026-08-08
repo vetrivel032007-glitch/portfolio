@@ -1,20 +1,11 @@
 .heroSection {
   min-height: 100vh;
-  min-height: 100dvh;
   display: flex;
   align-items: center;
   padding-top: 96px;
   padding-bottom: 50px;
   position: relative;
   overflow: hidden;
-}
-
-@media (max-width: 576px) {
-  .heroSection {
-    padding-top: 80px;
-    padding-bottom: 32px;
-    min-height: auto;
-  }
 }
 
 .heroGrid {
@@ -32,25 +23,13 @@
   }
 }
 
-@media (max-width: 480px) {
-  .heroGrid {
-    gap: 2rem;
-  }
-}
-
 .title {
-  font-size: clamp(1.8rem, 5.5vw, 3.8rem);
+  font-size: clamp(2rem, 5.5vw, 3.8rem);
   font-weight: 800;
   line-height: 1.15;
   letter-spacing: -0.03em;
   margin-bottom: 1rem;
   word-break: break-word;
-}
-
-@media (max-width: 360px) {
-  .title {
-    font-size: 1.6rem;
-  }
 }
 
 .nameHighlight {
@@ -60,7 +39,7 @@
 }
 
 .typingWrapper {
-  font-size: clamp(1rem, 3vw, 1.6rem);
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
   font-weight: 600;
   color: var(--text-secondary);
   min-height: 2.2rem;
@@ -73,14 +52,6 @@
 @media (max-width: 992px) {
   .typingWrapper {
     justify-content: center;
-  }
-}
-
-@media (max-width: 480px) {
-  .typingWrapper {
-    font-size: 0.95rem;
-    min-height: 1.8rem;
-    margin-bottom: 1rem;
   }
 }
 
@@ -103,7 +74,7 @@
 }
 
 .summary {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-size: clamp(0.95rem, 2vw, 1.1rem);
   color: var(--text-secondary);
   line-height: 1.7;
   max-width: 620px;
@@ -114,13 +85,6 @@
   .summary {
     margin-left: auto;
     margin-right: auto;
-  }
-}
-
-@media (max-width: 480px) {
-  .summary {
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
   }
 }
 
@@ -141,8 +105,6 @@
   .ctaGroup {
     flex-direction: column;
     align-items: stretch;
-    gap: 0.65rem;
-    margin-bottom: 1.75rem;
   }
   
   .ctaGroup a {
@@ -163,12 +125,6 @@
   }
 }
 
-@media (max-width: 480px) {
-  .socialRow {
-    gap: 0.65rem;
-  }
-}
-
 .socialIcon {
   width: 44px;
   height: 44px;
@@ -184,26 +140,12 @@
   transition: var(--transition-fast);
 }
 
-@media (max-width: 480px) {
-  .socialIcon {
-    width: 40px;
-    height: 40px;
-    font-size: 1.05rem;
-  }
-}
-
-@media (hover: hover) and (pointer: fine) {
-  .socialIcon:hover {
-    background: var(--gradient-primary);
-    color: #ffffff;
-    border-color: transparent;
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-glow);
-  }
-}
-
-.socialIcon:active {
-  transform: scale(0.93);
+.socialIcon:hover {
+  background: var(--gradient-primary);
+  color: #ffffff;
+  border-color: transparent;
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-glow);
 }
 
 /* Avatar Frame Right */
@@ -216,20 +158,13 @@
 
 .avatarWrapper {
   position: relative;
-  width: clamp(180px, 40vw, 340px);
-  height: clamp(180px, 40vw, 340px);
+  width: clamp(220px, 45vw, 340px);
+  height: clamp(220px, 45vw, 340px);
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   animation: float 6s ease-in-out infinite;
-}
-
-@media (max-width: 480px) {
-  .avatarWrapper {
-    width: clamp(160px, 55vw, 220px);
-    height: clamp(160px, 55vw, 220px);
-  }
 }
 
 .glowRing {
@@ -240,14 +175,6 @@
   filter: blur(16px);
   opacity: 0.75;
   animation: pulseGlow 4s ease-in-out infinite;
-}
-
-@media (max-width: 480px) {
-  .glowRing {
-    inset: -8px;
-    filter: blur(12px);
-    opacity: 0.6;
-  }
 }
 
 .avatarBorder {
@@ -263,10 +190,8 @@
   transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-@media (hover: hover) and (pointer: fine) {
-  .avatarBorder:hover {
-    transform: scale(1.04) rotate(1deg);
-  }
+.avatarBorder:hover {
+  transform: scale(1.04) rotate(1deg);
 }
 
 .avatarImg {
