@@ -48,7 +48,7 @@ export default function Contact() {
     setLoading(true);
 
     try {
-      // Send directly via background AJAX request (no apps opened)
+      // Send directly via background AJAX request to FormSubmit (delivers to vetrivel03.2007@gmail.com)
       const response = await fetch(`https://formsubmit.co/ajax/${personalInfo.email}`, {
         method: 'POST',
         headers: {
@@ -58,29 +58,34 @@ export default function Contact() {
         body: JSON.stringify({
           name: formData.name,
           email: formData.email,
-          subject: formData.subject || `Portfolio Contact from ${formData.name}`,
+          _replyto: formData.email,
+          subject: formData.subject || `Portfolio Direct Message from ${formData.name}`,
           message: formData.message,
-          _subject: `⚡ New Portfolio Inquiry from ${formData.name}`,
+          _subject: `⚡ New Portfolio Direct Message from ${formData.name}`,
           _template: 'table',
           _captcha: 'false',
         }),
       });
 
-      if (response.ok) {
+      const result = await response.json();
+
+      if (response.ok && result.success !== 'false') {
         setSubmitted(true);
-        showToast('⚡ Message sent automatically to Vetrivel D!');
+        showToast(`⚡ Message sent automatically to ${personalInfo.email}!`);
         setFormData({ name: '', email: '', subject: '', message: '' });
       } else {
-        throw new Error('Server returned non-200 status');
+        throw new Error(result.message || 'Submission error');
       }
     } catch (error) {
       console.warn('Form submit API response handler:', error);
+      // Fallback: trigger direct mail client if network/CORS blocks background fetch
+      window.location.href = `mailto:${personalInfo.email}?subject=${encodeURIComponent(formData.subject || 'Portfolio Inquiry')}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
       setSubmitted(true);
-      showToast('⚡ Message sent successfully to Vetrivel D!');
+      showToast('⚡ Opening email client to deliver your message!');
       setFormData({ name: '', email: '', subject: '', message: '' });
     } finally {
       setLoading(false);
-      setTimeout(() => setSubmitted(false), 7000);
+      setTimeout(() => setSubmitted(false), 8000);
     }
   };
 
